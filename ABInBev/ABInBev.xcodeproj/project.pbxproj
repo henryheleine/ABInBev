@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DECEB4C62E4A3AEE009B568E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DECEB4C52E4A3AEE009B568E /* ComposableArchitecture */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DECEB4A82E4A38C3009B568E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DECEB4922E4A38C2009B568E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DECEB4992E4A38C2009B568E;
+			remoteInfo = ABInBev;
+		};
+		DECEB4B22E4A38C3009B568E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DECEB4922E4A38C2009B568E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DECEB4992E4A38C2009B568E;
+			remoteInfo = ABInBev;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DECEB49A2E4A38C2009B568E /* ABInBev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABInBev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DECEB4A72E4A38C3009B568E /* ABInBevTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABInBevTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DECEB4B12E4A38C3009B568E /* ABInBevUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABInBevUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		DECEB49C2E4A38C2009B568E /* ABInBev */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ABInBev;
+			sourceTree = "<group>";
+		};
+		DECEB4AA2E4A38C3009B568E /* ABInBevTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ABInBevTests;
+			sourceTree = "<group>";
+		};
+		DECEB4B42E4A38C3009B568E /* ABInBevUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ABInBevUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DECEB4972E4A38C2009B568E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DECEB4C62E4A3AEE009B568E /* ComposableArchitecture in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DECEB4A42E4A38C3009B568E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DECEB4AE2E4A38C3009B568E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DECEB4912E4A38C2009B568E = {
+			isa = PBXGroup;
+			children = (
+				DECEB49C2E4A38C2009B568E /* ABInBev */,
+				DECEB4AA2E4A38C3009B568E /* ABInBevTests */,
+				DECEB4B42E4A38C3009B568E /* ABInBevUITests */,
+				DECEB49B2E4A38C2009B568E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DECEB49B2E4A38C2009B568E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DECEB49A2E4A38C2009B568E /* ABInBev.app */,
+				DECEB4A72E4A38C3009B568E /* ABInBevTests.xctest */,
+				DECEB4B12E4A38C3009B568E /* ABInBevUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DECEB4992E4A38C2009B568E /* ABInBev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DECEB4BB2E4A38C3009B568E /* Build configuration list for PBXNativeTarget "ABInBev" */;
+			buildPhases = (
+				DECEB4962E4A38C2009B568E /* Sources */,
+				DECEB4972E4A38C2009B568E /* Frameworks */,
+				DECEB4982E4A38C2009B568E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DECEB49C2E4A38C2009B568E /* ABInBev */,
+			);
+			name = ABInBev;
+			packageProductDependencies = (
+				DECEB4C52E4A3AEE009B568E /* ComposableArchitecture */,
+			);
+			productName = ABInBev;
+			productReference = DECEB49A2E4A38C2009B568E /* ABInBev.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DECEB4A62E4A38C3009B568E /* ABInBevTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DECEB4BE2E4A38C3009B568E /* Build configuration list for PBXNativeTarget "ABInBevTests" */;
+			buildPhases = (
+				DECEB4A32E4A38C3009B568E /* Sources */,
+				DECEB4A42E4A38C3009B568E /* Frameworks */,
+				DECEB4A52E4A38C3009B568E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DECEB4A92E4A38C3009B568E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DECEB4AA2E4A38C3009B568E /* ABInBevTests */,
+			);
+			name = ABInBevTests;
+			packageProductDependencies = (
+			);
+			productName = ABInBevTests;
+			productReference = DECEB4A72E4A38C3009B568E /* ABInBevTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DECEB4B02E4A38C3009B568E /* ABInBevUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DECEB4C12E4A38C3009B568E /* Build configuration list for PBXNativeTarget "ABInBevUITests" */;
+			buildPhases = (
+				DECEB4AD2E4A38C3009B568E /* Sources */,
+				DECEB4AE2E4A38C3009B568E /* Frameworks */,
+				DECEB4AF2E4A38C3009B568E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DECEB4B32E4A38C3009B568E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DECEB4B42E4A38C3009B568E /* ABInBevUITests */,
+			);
+			name = ABInBevUITests;
+			packageProductDependencies = (
+			);
+			productName = ABInBevUITests;
+			productReference = DECEB4B12E4A38C3009B568E /* ABInBevUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DECEB4922E4A38C2009B568E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					DECEB4992E4A38C2009B568E = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					DECEB4A62E4A38C3009B568E = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = DECEB4992E4A38C2009B568E;
+					};
+					DECEB4B02E4A38C3009B568E = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = DECEB4992E4A38C2009B568E;
+					};
+				};
+			};
+			buildConfigurationList = DECEB4952E4A38C2009B568E /* Build configuration list for PBXProject "ABInBev" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DECEB4912E4A38C2009B568E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DECEB4C42E4A3AEE009B568E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DECEB49B2E4A38C2009B568E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DECEB4992E4A38C2009B568E /* ABInBev */,
+				DECEB4A62E4A38C3009B568E /* ABInBevTests */,
+				DECEB4B02E4A38C3009B568E /* ABInBevUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DECEB4982E4A38C2009B568E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DECEB4A52E4A38C3009B568E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DECEB4AF2E4A38C3009B568E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DECEB4962E4A38C2009B568E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DECEB4A32E4A38C3009B568E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DECEB4AD2E4A38C3009B568E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DECEB4A92E4A38C3009B568E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DECEB4992E4A38C2009B568E /* ABInBev */;
+			targetProxy = DECEB4A82E4A38C3009B568E /* PBXContainerItemProxy */;
+		};
+		DECEB4B32E4A38C3009B568E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DECEB4992E4A38C2009B568E /* ABInBev */;
+			targetProxy = DECEB4B22E4A38C3009B568E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DECEB4B92E4A38C3009B568E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DECEB4BA2E4A38C3009B568E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DECEB4BC2E4A38C3009B568E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DECEB4BD2E4A38C3009B568E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DECEB4BF2E4A38C3009B568E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBevTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ABInBev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ABInBev";
+			};
+			name = Debug;
+		};
+		DECEB4C02E4A38C3009B568E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBevTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ABInBev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ABInBev";
+			};
+			name = Release;
+		};
+		DECEB4C22E4A38C3009B568E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBevUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ABInBev;
+			};
+			name = Debug;
+		};
+		DECEB4C32E4A38C3009B568E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBevUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ABInBev;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DECEB4952E4A38C2009B568E /* Build configuration list for PBXProject "ABInBev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DECEB4B92E4A38C3009B568E /* Debug */,
+				DECEB4BA2E4A38C3009B568E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DECEB4BB2E4A38C3009B568E /* Build configuration list for PBXNativeTarget "ABInBev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DECEB4BC2E4A38C3009B568E /* Debug */,
+				DECEB4BD2E4A38C3009B568E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DECEB4BE2E4A38C3009B568E /* Build configuration list for PBXNativeTarget "ABInBevTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DECEB4BF2E4A38C3009B568E /* Debug */,
+				DECEB4C02E4A38C3009B568E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DECEB4C12E4A38C3009B568E /* Build configuration list for PBXNativeTarget "ABInBevUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DECEB4C22E4A38C3009B568E /* Debug */,
+				DECEB4C32E4A38C3009B568E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DECEB4C42E4A3AEE009B568E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DECEB4C52E4A3AEE009B568E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DECEB4C42E4A3AEE009B568E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DECEB4922E4A38C2009B568E /* Project object */;
+}
