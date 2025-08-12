@@ -9,25 +9,21 @@ import ComposableArchitecture
 import Foundation
 
 struct ListReducer: Reducer {
-    
-    struct State: Equatable {
-        var listings: [Survey] = []
-    }
-    
-    enum Action {
-        case addSurvey
-        case survery(id: UUID)
-    }
+    typealias State = ListState
+    typealias Action = ListAction
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .addSurvey:
-                state.listings.append(Survey(title: "\(Date.now)"))
+                state.surveys.append(.init(id: UUID(), imageUploadPercentage: 0, notes: "...", referenceNumber: "\(Int.random(in: 0...100))", surveyMode: .paused))
                 return .none
-            case .survery(id: _):
+            case .survey:
                 return .none
             }
+        }
+        .forEach(\.surveys, action: /ListAction.survey(id:action:)) {
+            SurveyReducer()
         }
     }
 }

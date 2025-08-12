@@ -9,10 +9,14 @@ import Foundation
 
 struct Survey: Equatable, Hashable {
     var id: UUID
-    var title: String
+    var imageUploadPercentage: Int
+    var notes: String
+    var referenceNumber: String
     
-    init(id: UUID = UUID(), title: String = "") {
+    init(id: UUID = UUID(), imageUploadPercentage: Int = 0, notes: String = "", referenceNumber: String = "\(Int.random(in: 0...100))") {
         self.id = id
-        self.title = title
+        self.imageUploadPercentage = imageUploadPercentage
+        self.notes = notes
+        self.referenceNumber = referenceNumber
     }
 }

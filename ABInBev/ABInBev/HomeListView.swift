@@ -1,5 +1,5 @@
 //
-//  ListView.swift
+//  HomeListView.swift
 //  ABInBev
 //
 //  Created by Henry Heleine on 8/11/25.
@@ -8,7 +8,7 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct ListView: View {
+struct HomeListView: View {
     var store: StoreOf<ListReducer>
     
     var body: some View {
@@ -16,9 +16,13 @@ struct ListView: View {
             NavigationView {
                 VStack {
                     List {
-                        ForEach(viewStore.listings, id: \.self) {
-                            Text("Survey = \($0)")
-                        }
+                        ForEachStore(
+                            self.store.scope(
+                                state: \.surveys,
+                                action: ListAction.survey(id:action:)
+                            ),
+                            content: SurveyView.init
+                        )
                     }
                     Button("Add Survey") {
                         viewStore.send(.addSurvey)
@@ -32,7 +36,7 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView(store: Store(initialState: ListReducer.State(), reducer: {
+    HomeListView(store: Store(initialState: ListReducer.State(), reducer: {
         ListReducer()
     }))
 }
