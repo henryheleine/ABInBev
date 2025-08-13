@@ -8,8 +8,7 @@
 import ComposableArchitecture
 import Foundation
 
-// @CasePathable
-enum ListAction: Equatable {
+enum ListAction {
     case addSurvey
     case survey(id: UUID, action: SurveyAction)
 }

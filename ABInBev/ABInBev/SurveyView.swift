@@ -16,7 +16,14 @@ struct SurveyView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             HStack {
                 VStack {
-                    Text("#\(viewStore.state.referenceNumber) \n Notes: \(viewStore.state.notes) \n Image Upload (%): \(viewStore.state.imageUploadPercentage)")
+                    let text = """
+                        # \(viewStore.state.referenceNumber)
+                        Notes:
+                        \(viewStore.state.notes)
+                        Image (Uploaded: \(String(format: "%.2f", viewStore.state.imageUploadPercentage * 100))%)
+                        🍺
+                        """
+                    Text(text)
                 }
                 Spacer()
                 switch viewStore.state.surveyMode {

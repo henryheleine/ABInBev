@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum SurveyAction: Equatable {
-    case pause, resume, tick, upload
+enum SurveyAction {
+    case complete, pause, resume, upload
+    case updateProgress(Double)
 }

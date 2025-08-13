@@ -9,18 +9,20 @@ Native Plan:
 - Continued Processing Task Request (id, title, subtitle)
 - Queue based on priority of tasks
 - Variable for retries
+
 - Automated tests
 - swipe to delete
-- expire cache / clear up after 1 month
-- mock POST request up to server
+- auto upload config/setting
 
 Backend Plan:
-- mocked endpoint to download random survey text and image(s)
+- mocked for random text / image(s)
+- mock POST request up to server
 
-Post MVP and P2 Production:
+P2 Further Work:
 - max downloads while on slow connections 1 - 3
 - add task scheduler with OS
 - requires external power as an option during carplay
 - live activities for downloading status
 - more appropriate monitoring/alerting on errors
 - widget for checking on downloads
+- expire cache / clear up after 1 month

@@ -16,7 +16,7 @@ struct ListReducer: Reducer {
         Reduce { state, action in
             switch action {
             case .addSurvey:
-                state.surveys.append(.init(id: UUID(), imageUploadPercentage: 0, notes: "...", referenceNumber: "\(Int.random(in: 0...100))", surveyMode: .paused))
+                state.surveys.append(.init(id: UUID(), imageUploadPercentage: 0, notes: "...", referenceNumber: "\(Int.random(in: 0...100))", serverReponse: "", surveyMode: .paused))
                 return .none
             case .survey:
                 return .none
