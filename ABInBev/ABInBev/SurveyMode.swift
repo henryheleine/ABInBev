@@ -8,5 +8,5 @@
 import Foundation
 
 enum SurveyMode: Equatable {
-    case complete, paused, uploading 
+    case complete, paused, uploading
 }

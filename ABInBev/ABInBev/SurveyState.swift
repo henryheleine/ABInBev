@@ -9,10 +9,11 @@ import Combine
 import Foundation
 
 struct SurveyState: Equatable, Identifiable {
-    let id: UUID
+    var id: UUID
     var imageUploadPercentage: Double
     var notes: String
     var referenceNumber: String
-    var serverReponse: String
+    var session = URLSession.shared
     var surveyMode: SurveyMode
+    var uploadClient: UploadClient
 }
