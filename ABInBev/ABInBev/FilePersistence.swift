@@ -9,6 +9,7 @@ import Dependencies
 import Foundation
 
 struct FilePersistence {
+    var fileExists: @Sendable () -> Bool
     var save: @Sendable (_ data: Encodable) throws -> Void
     var load: @Sendable (_ type: Any.Type) throws -> Any
 }
@@ -21,6 +22,9 @@ extension FilePersistence {
         }()
         
         return FilePersistence(
+            fileExists: {
+                return FileManager.default.fileExists(atPath: url.absoluteString)
+            },
             save: { data in
                 let enc = JSONEncoder()
                 enc.outputFormatting = [.prettyPrinted, .sortedKeys]

@@ -11,6 +11,8 @@ import SwiftUI
 
 @main
 struct ABInBevApp: App {
+    @Dependency(\.filePersistence) var persistence
+    
     var body: some Scene {
         WindowGroup {
             HomeListView(store: Store(initialState: ListReducer.State(), reducer: {
@@ -18,11 +20,16 @@ struct ABInBevApp: App {
             }))
         }
         .backgroundTask(.appRefresh("com.henryheleine.ABInBev.backgroundTask")) {
-            // TODO: save completed operations to disk/file persist
-            // TODO: get each operation in the queue and move them onto background operation
-            let uploadClient = UploadClient.shared
-            let backgroundOperation = BackgroundUploadOperation()
-            uploadClient.operationQueue.addOperation(backgroundOperation)
+            Task {
+                let config = URLSessionConfiguration.backgroundConfig()
+                let session = URLSession(configuration: config, delegate: UploadClient.shared, delegateQueue: UploadClient.shared.operationQueue)
+                let surveys = try await persistence.load([SurveyState].self) as! [SurveyState]
+                surveys.forEach { survey in
+                    // CHECK IF MODE == COMPLETE
+                    let request = URLRequest.mock(forSurveyId: survey.referenceNumber)
+                    session.downloadTask(with: request).resume()
+                }
+            }
         }
     }
 }

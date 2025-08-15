@@ -5,6 +5,7 @@
 //  Created by Henry Heleine on 8/11/25.
 //
 
+import BackgroundTasks
 import ComposableArchitecture
 import SwiftUI
 

@@ -20,8 +20,12 @@ struct ListReducer: Reducer {
                 state.surveys.append(SurveyState())
                 return .send(.saveToDisk)
             case .loadFromDisk:
-                return .run { send in
-                    await send(.loadResponse(Result { try persistence.load([SurveyState].self) as! [SurveyState] }))
+                if persistence.fileExists() {
+                    return .run { send in
+                        await send(.loadResponse(Result { try persistence.load([SurveyState].self) as! [SurveyState] }))
+                    }
+                } else {
+                    return .none
                 }
             case let .loadResponse(.success(loaded)):
                 state.surveys = IdentifiedArray(uniqueElements: loaded)

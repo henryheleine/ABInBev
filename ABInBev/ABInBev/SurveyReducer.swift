@@ -24,13 +24,14 @@ struct SurveyReducer: Reducer {
                 )
                 request.requiresNetworkConnectivity = true
                 request.requiresExternalPower = false
+                request.earliestBeginDate = Date().addingTimeInterval(10)
                 try? BGTaskScheduler.shared.submit(request)
                 return .none
             case .complete:
                 state.surveyMode = .complete
                 return .none
             case .foreground:
-                // // move all operations from background session to foreground url session
+                // move all operations from background session to foreground url session
                 return .none
             case .updateProgress(let progress):
                 state.imageUploadPercentage = progress
@@ -40,7 +41,7 @@ struct SurveyReducer: Reducer {
                 state.imageUploadPercentage = 0
                 return .publisher {
                     state.uploadClient
-                        .publisher()
+                        .publisher(surveyId: state.referenceNumber)
                         .map(SurveyAction.updateProgress)
                         .append(Just(.complete))
                         .eraseToAnyPublisher()

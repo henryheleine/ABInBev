@@ -10,30 +10,30 @@ import Foundation
 
 class UploadOperation: Operation, @unchecked Sendable {
     var attempts: Int
-    var date: Date
     var isActive: Bool
     var maxRetries: Int
     var subject: PassthroughSubject<Double, Never>
+    var surveyId: String
     var timeoutInterval: TimeInterval
     
     init(attempts: Int = 0,
-         date: Date = Date(),
          isActive: Bool = true,
          maxRetries: Int = 1,
          subject: PassthroughSubject<Double, Never> = PassthroughSubject<Double, Never>(),
+         surveyId: String = "",
          timeoutInterval: TimeInterval = 60) {
         self.attempts = attempts
-        self.date = date
         self.isActive = isActive
         self.maxRetries = maxRetries
         self.subject = subject
+        self.surveyId = surveyId
         self.timeoutInterval = timeoutInterval
     }
     
     override func main() {
         isExecuting = true
         Task {
-            let request = URLRequest.postUpload(timeoutInterval: timeoutInterval)
+            let request = URLRequest.mock(forSurveyId: surveyId, timeoutInterval: timeoutInterval)
             do {
                 let (bytes, _) = try await URLSession.shared.bytes(for: request)
                 var iterator = bytes.makeAsyncIterator()
