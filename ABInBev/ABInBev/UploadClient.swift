@@ -49,7 +49,7 @@ class UploadClient: NSObject, URLSessionDownloadDelegate {
                 if let survey = surveys?[i] {
                     if survey.referenceNumber == url {
                         surveys?[i] = SurveyState(id: survey.id,
-                                                  imageUploadPercentage: survey.imageUploadPercentage,
+                                                  imageUploadPercentage: 1,
                                                   notes: survey.notes,
                                                   referenceNumber: survey.referenceNumber,
                                                   surveyMode: .complete)

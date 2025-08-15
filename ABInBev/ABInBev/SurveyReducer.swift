@@ -30,9 +30,6 @@ struct SurveyReducer: Reducer {
             case .complete:
                 state.surveyMode = .complete
                 return .none
-            case .foreground:
-                // move all operations from background session to foreground url session
-                return .none
             case .updateProgress(let progress):
                 state.imageUploadPercentage = progress
                 return .none

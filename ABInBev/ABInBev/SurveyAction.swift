@@ -8,6 +8,6 @@
 import Foundation
 
 enum SurveyAction {
-    case background, complete, foreground, upload
+    case background, complete, upload
     case updateProgress(Double)
 }

@@ -44,8 +44,6 @@ struct SurveyView: View {
             .onChange(of: scenePhase) { oldValue, newValue in
                 if case .background = newValue {
                     viewStore.send(.background)
-                } else if case .active = newValue  {
-                    viewStore.send(.foreground)
                 }
             }
         }

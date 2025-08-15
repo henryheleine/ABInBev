@@ -10,6 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 
 struct HomeListView: View {
+    @Environment(\.scenePhase) private var scenePhase
     var store: StoreOf<ListReducer>
     
     var body: some View {
@@ -30,9 +31,11 @@ struct HomeListView: View {
                     }
                     .padding()
                 }
-                .onAppear {
-                    viewStore.send(.loadFromDisk)
-                }
+                .onChange(of: scenePhase, { oldValue, newValue in
+                    if oldValue == .inactive && newValue == .active {
+                        viewStore.send(.loadFromDisk)
+                    }
+                })
                 .navigationTitle("Surveys")
             }
         }
