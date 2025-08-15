@@ -10,6 +10,7 @@ import ComposableArchitecture
 import Foundation
 
 class UploadClient: NSObject, URLSessionDownloadDelegate {
+    @Dependency(\.filePersistence) var persistence
     public static let shared = UploadClient()
     let backgroundTimeout = Double(24 * 60 * 60) // 24 hours
     var id: UUID
@@ -42,8 +43,21 @@ class UploadClient: NSObject, URLSessionDownloadDelegate {
     
     // MARK: - URLSessionDownloadDelegate
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        print("downloadTask = \(downloadTask)")
-        print("location = \(location)")
+        if let url = downloadTask.originalRequest?.url?.lastPathComponent {
+            var surveys = try? (persistence.load([SurveyState].self) as! [SurveyState])
+            for i in 0..<(surveys?.count ?? 0) {
+                if let survey = surveys?[i] {
+                    if survey.referenceNumber == url {
+                        surveys?[i] = SurveyState(id: survey.id,
+                                                  imageUploadPercentage: survey.imageUploadPercentage,
+                                                  notes: survey.notes,
+                                                  referenceNumber: survey.referenceNumber,
+                                                  surveyMode: .complete)
+                    }
+                }
+            }
+            try? self.persistence.save(surveys)
+        }
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {

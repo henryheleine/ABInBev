@@ -25,7 +25,6 @@ struct ABInBevApp: App {
                 let session = URLSession(configuration: config, delegate: UploadClient.shared, delegateQueue: UploadClient.shared.operationQueue)
                 let surveys = try await persistence.load([SurveyState].self) as! [SurveyState]
                 surveys.forEach { survey in
-                    // CHECK IF MODE == COMPLETE
                     let request = URLRequest.mock(forSurveyId: survey.referenceNumber)
                     session.downloadTask(with: request).resume()
                 }
