@@ -9,37 +9,49 @@ import Combine
 import Foundation
 
 class UploadOperation: Operation, @unchecked Sendable {
+    var attempts: Int
     var isActive: Bool
+    var maxRetries: Int
     var subject: PassthroughSubject<Double, Never>
+    var timeoutInterval: TimeInterval
     
-    init(isActive: Bool = true, subject: PassthroughSubject<Double, Never>) {
-        self.subject = subject
+    init(attempts: Int = 0,
+         isActive: Bool = true,
+         maxRetries: Int = 1,
+         subject: PassthroughSubject<Double, Never> = PassthroughSubject<Double, Never>(),
+         timeoutInterval: TimeInterval = 60) {
+        self.attempts = attempts
         self.isActive = isActive
+        self.maxRetries = maxRetries
+        self.subject = subject
+        self.timeoutInterval = timeoutInterval
     }
     
     override func main() {
         isExecuting = true
         Task {
-            var request = URLRequest(url: URL(string: "https://render-4ezx.onrender.com/upload")!)
-            request.httpMethod = "POST"
-            request.addValue("chunked", forHTTPHeaderField: "Transfer-Encoding")
-            let (bytes, _) = try await URLSession.shared.bytes(for: request)
-            var iterator = bytes.makeAsyncIterator()
-            var data = Data()
-            while isActive, let byte = try await iterator.next() {
-                data.append(byte)
-                if UploadClient.isValidJSON(data) {
-                    if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let progress = json["progress"] as? Double {
-                        try? await Task.sleep(for: .milliseconds(250))
-                        subject.send(progress)
+            let request = URLRequest.postUpload(timeoutInterval: timeoutInterval)
+            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+                guard let self = self else { return }
+                if error == nil {
+                    // mock slow connection/large upload size
+                    for i in 0...25 {
+                        sleep(1)
+                        self.subject.send(Double(i) / 25)
                     }
-                    data = Data()
+                    self.subject.send(completion: .finished)
+                    self.isExecuting = false
+                    self.isFinished = true
+                    // TODO: save data to file for resume data (background download)
+                } else {
+                    if self.attempts < self.maxRetries {
+                        sleep(15)
+                        self.timeoutInterval = self.timeoutInterval * 2
+                        self.attempts += 1
+                        self.main()
+                    }
                 }
-            }
-            // TODO: save data to file for resume data (background download)
-            subject.send(completion: .finished)
-            isExecuting = false
-            isFinished = true
+            }.resume()
         }
     }
     

@@ -20,9 +20,7 @@ struct ABInBevApp: App {
         .backgroundTask(.appRefresh("com.henryheleine.ABInBev.backgroundTask")) {
             let config = URLSessionConfiguration.background(withIdentifier: "com.henryheleine.ABInBev.backgroundTask")
             let session = URLSession(configuration: config)
-            var request = URLRequest(url: URL(string: "https://render-4ezx.onrender.com/upload")!)
-            request.httpMethod = "POST"
-            request.addValue("chunked", forHTTPHeaderField: "Transfer-Encoding")
+            let request = URLRequest.postUpload()
             session.downloadTask(with: request) { url, response, error in
                 NSLog("HH DEBUG ***** response = \(response ?? URLResponse()) *****")
             }.resume()

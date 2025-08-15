@@ -26,6 +26,8 @@ struct UploadClient: Equatable {
     func publisher() -> AnyPublisher<Double, Never> {
         let subject = PassthroughSubject<Double, Never>()
         let uploadOperation = UploadOperation(subject: subject)
+        // TODO: could add UI element to mark upload as higher priority (possible edit list) currently in time order
+        uploadOperation.queuePriority = .high
         operationQueue.addOperation(uploadOperation)
         return subject
             .receive(on: DispatchQueue.main)
