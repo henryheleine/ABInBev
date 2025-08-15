@@ -18,12 +18,11 @@ struct ABInBevApp: App {
             }))
         }
         .backgroundTask(.appRefresh("com.henryheleine.ABInBev.backgroundTask")) {
-            let config = URLSessionConfiguration.background(withIdentifier: "com.henryheleine.ABInBev.backgroundTask")
-            let session = URLSession(configuration: config)
-            let request = URLRequest.postUploadStream()
-            session.downloadTask(with: request) { url, response, error in
-                NSLog("HH DEBUG ***** response = \(response ?? URLResponse()) *****")
-            }.resume()
+            // TODO: save completed operations to disk/file persist
+            // TODO: get each operation in the queue and move them onto background operation
+            let uploadClient = UploadClient.shared
+            let backgroundOperation = BackgroundUploadOperation()
+            uploadClient.operationQueue.addOperation(backgroundOperation)
         }
     }
 }

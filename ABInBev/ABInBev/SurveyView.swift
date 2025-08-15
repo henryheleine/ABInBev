@@ -44,8 +44,8 @@ struct SurveyView: View {
             .onChange(of: scenePhase) { oldValue, newValue in
                 if case .background = newValue {
                     viewStore.send(.background)
-                } else if case .active = newValue {
-                    // move back to active streamed connection
+                } else if case .active = newValue  {
+                    viewStore.send(.foreground)
                 }
             }
         }

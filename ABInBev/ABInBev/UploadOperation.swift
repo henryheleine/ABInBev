@@ -16,7 +16,12 @@ class UploadOperation: Operation, @unchecked Sendable {
     var subject: PassthroughSubject<Double, Never>
     var timeoutInterval: TimeInterval
     
-    init(attempts: Int = 0, date: Date = Date(), isActive: Bool = true, maxRetries: Int = 1, subject: PassthroughSubject<Double, Never>, timeoutInterval: TimeInterval = 60) {
+    init(attempts: Int = 0,
+         date: Date = Date(),
+         isActive: Bool = true,
+         maxRetries: Int = 1,
+         subject: PassthroughSubject<Double, Never> = PassthroughSubject<Double, Never>(),
+         timeoutInterval: TimeInterval = 60) {
         self.attempts = attempts
         self.date = date
         self.isActive = isActive
@@ -28,7 +33,7 @@ class UploadOperation: Operation, @unchecked Sendable {
     override func main() {
         isExecuting = true
         Task {
-            let request = URLRequest.postUploadStream(timeoutInterval: timeoutInterval)
+            let request = URLRequest.postUpload(timeoutInterval: timeoutInterval)
             do {
                 let (bytes, _) = try await URLSession.shared.bytes(for: request)
                 var iterator = bytes.makeAsyncIterator()
@@ -72,7 +77,7 @@ class UploadOperation: Operation, @unchecked Sendable {
     override var isAsynchronous: Bool { true }
     private let stateQueue = DispatchQueue(label: "persistent.operation.state", attributes: .concurrent)
     private var _executing: Bool = false
-    override private(set) var isExecuting: Bool {
+    override var isExecuting: Bool {
         get { stateQueue.sync { _executing } }
         set {
             willChangeValue(forKey: "isExecuting")
@@ -81,7 +86,7 @@ class UploadOperation: Operation, @unchecked Sendable {
         }
     }
     private var _finished: Bool = false
-    override private(set) var isFinished: Bool {
+    override var isFinished: Bool {
         get { stateQueue.sync { _finished } }
         set {
             willChangeValue(forKey: "isFinished")

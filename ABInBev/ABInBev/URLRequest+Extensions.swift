@@ -8,11 +8,9 @@
 import Foundation
 
 extension URLRequest {
-    static let url = "https://render-4ezx.onrender.com/upload"
     
-    static func postUploadStream(timeoutInterval: TimeInterval = 60) -> URLRequest {
-        var request = URLRequest(url: URL(string: url)!, timeoutInterval: timeoutInterval)
-        request.addValue("chunked", forHTTPHeaderField: "Transfer-Encoding")
+    static func postUpload(timeoutInterval: TimeInterval = 60) -> URLRequest {
+        var request = URLRequest(url: URL(string: "https://render-4ezx.onrender.com/upload")!, timeoutInterval: timeoutInterval)
         request.httpMethod = "POST"
         return request
     }

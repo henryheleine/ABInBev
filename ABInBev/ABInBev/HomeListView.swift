@@ -31,6 +31,7 @@ struct HomeListView: View {
                 }
                 .onAppear {
                     URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://render-4ezx.onrender.com/")!)) // spin up free service node js app
+                    viewStore.send(.loadFromDisk)
                 }
                 .navigationTitle("Surveys")
             }

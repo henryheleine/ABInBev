@@ -12,12 +12,10 @@ import Foundation
 struct UploadClient: Equatable {
     public static let shared = UploadClient()
     var id: UUID
-    var isActive: Bool
     var operationQueue: OperationQueue
     
-    init(id: UUID = UUID(), isActive: Bool = true, operationQueue: OperationQueue = OperationQueue()) {
+    init(id: UUID = UUID(), operationQueue: OperationQueue = OperationQueue()) {
         self.id = id
-        self.isActive = isActive
         self.operationQueue = operationQueue
         self.operationQueue.name = "com.henryheleine.ABInBev.UploadClientOperationQueue"
         self.operationQueue.maxConcurrentOperationCount = 2

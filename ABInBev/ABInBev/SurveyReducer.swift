@@ -18,7 +18,7 @@ struct SurveyReducer: Reducer {
         Reduce { state, action in
             switch action {
             case .background:
-                state.uploadClient.isActive = false
+                state.uploadClient.operationQueue.cancelAllOperations()
                 let request = BGProcessingTaskRequest(
                     identifier: "com.henryheleine.ABInBev.backgroundTask"
                 )
@@ -28,6 +28,9 @@ struct SurveyReducer: Reducer {
                 return .none
             case .complete:
                 state.surveyMode = .complete
+                return .none
+            case .foreground:
+                // // move all operations from background session to foreground url session
                 return .none
             case .updateProgress(let progress):
                 state.imageUploadPercentage = progress

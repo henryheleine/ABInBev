@@ -9,6 +9,7 @@ import ComposableArchitecture
 import Foundation
 
 struct ListReducer: Reducer {
+    @Dependency(\.filePersistence) var persistence
     typealias State = ListState
     typealias Action = ListAction
     
@@ -16,12 +17,30 @@ struct ListReducer: Reducer {
         Reduce { state, action in
             switch action {
             case .addSurvey:
-                state.surveys.append(.init(id: UUID(),
-                                           imageUploadPercentage: 0,
-                                           notes: "...",
-                                           referenceNumber: "\(Int.random(in: 0...100))",
-                                           surveyMode: .paused,
-                                           uploadClient: UploadClient.shared))
+                state.surveys.append(SurveyState())
+                return .send(.saveToDisk)
+            case .loadFromDisk:
+                return .run { send in
+                    await send(.loadResponse(Result { try persistence.load([SurveyState].self) as! [SurveyState] }))
+                }
+            case let .loadResponse(.success(loaded)):
+                state.surveys = IdentifiedArray(uniqueElements: loaded)
+                return .none
+            case let .loadResponse(.failure(error)):
+                print(error.localizedDescription)
+                return .none
+            case .saveToDisk:
+                let surveys = state.surveys
+                return .run { send in
+                    await send(.saveCompleted(Result {
+                        try persistence.save(surveys)
+                        return true
+                    }))
+                }
+            case let .saveCompleted(.failure(error)):
+                print(error.localizedDescription)
+                return .none
+            case .saveCompleted(.success):
                 return .none
             case .survey:
                 return .none

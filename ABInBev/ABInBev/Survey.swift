@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Survey: Equatable, Hashable {
+struct Survey: Codable, Equatable, Hashable, Identifiable {
     var id: UUID
     var imageUploadPercentage: Int
     var notes: String

@@ -1,22 +1,21 @@
 # ABInBev
 
 Native Plan:
+- File backed storage for demo
 - 24 hours cut off for background task/retry
 
 - NWPath reachability listener
-- Download task priorities (time or size based)
-- File backed storage for demo
 
 - Task progress for iOS 26 live activities
 - Continued Processing Task Request (id, title, subtitle)
 - Automated tests
 - swipe to delete
+- allow for change of operation priority
 
 Done:
 - Composable Architecture for state management of list of surveys
 - Add priority queue based time added
 - Variable for retries, wait small time then retry with increased timeout interval
-
 
 Backend Plan:
 - mocked for random text / image(s)

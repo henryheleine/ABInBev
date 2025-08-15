@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum SurveyMode: Equatable {
+enum SurveyMode: Codable, Equatable {
     case complete, paused, uploading
 }
