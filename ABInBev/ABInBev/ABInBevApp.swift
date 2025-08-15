@@ -20,7 +20,7 @@ struct ABInBevApp: App {
         .backgroundTask(.appRefresh("com.henryheleine.ABInBev.backgroundTask")) {
             let config = URLSessionConfiguration.background(withIdentifier: "com.henryheleine.ABInBev.backgroundTask")
             let session = URLSession(configuration: config)
-            let request = URLRequest.postUpload()
+            let request = URLRequest.postUploadStream()
             session.downloadTask(with: request) { url, response, error in
                 NSLog("HH DEBUG ***** response = \(response ?? URLResponse()) *****")
             }.resume()

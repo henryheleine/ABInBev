@@ -10,17 +10,15 @@ import Foundation
 
 class UploadOperation: Operation, @unchecked Sendable {
     var attempts: Int
+    var date: Date
     var isActive: Bool
     var maxRetries: Int
     var subject: PassthroughSubject<Double, Never>
     var timeoutInterval: TimeInterval
     
-    init(attempts: Int = 0,
-         isActive: Bool = true,
-         maxRetries: Int = 1,
-         subject: PassthroughSubject<Double, Never> = PassthroughSubject<Double, Never>(),
-         timeoutInterval: TimeInterval = 60) {
+    init(attempts: Int = 0, date: Date = Date(), isActive: Bool = true, maxRetries: Int = 1, subject: PassthroughSubject<Double, Never>, timeoutInterval: TimeInterval = 60) {
         self.attempts = attempts
+        self.date = date
         self.isActive = isActive
         self.maxRetries = maxRetries
         self.subject = subject
@@ -30,29 +28,43 @@ class UploadOperation: Operation, @unchecked Sendable {
     override func main() {
         isExecuting = true
         Task {
-            let request = URLRequest.postUpload(timeoutInterval: timeoutInterval)
-            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-                guard let self = self else { return }
-                if error == nil {
-                    // mock slow connection/large upload size
-                    for i in 0...25 {
-                        sleep(1)
-                        self.subject.send(Double(i) / 25)
-                    }
-                    self.subject.send(completion: .finished)
-                    self.isExecuting = false
-                    self.isFinished = true
-                    // TODO: save data to file for resume data (background download)
-                } else {
-                    if self.attempts < self.maxRetries {
-                        sleep(15)
-                        self.timeoutInterval = self.timeoutInterval * 2
-                        self.attempts += 1
-                        self.main()
+            let request = URLRequest.postUploadStream(timeoutInterval: timeoutInterval)
+            do {
+                let (bytes, _) = try await URLSession.shared.bytes(for: request)
+                var iterator = bytes.makeAsyncIterator()
+                var data = Data()
+                while isActive, let byte = try await iterator.next() {
+                    data.append(byte)
+                    if UploadClient.isValidJSON(data) {
+                        if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let _ = json["progress"] as? Double {
+                            // mock slow connection/large file upload
+                            for i in 0...25 {
+                                try? await Task.sleep(for: .seconds(1))
+                                subject.send(Double(i) / 25)
+                            }
+                        }
+                        data = Data()
                     }
                 }
-            }.resume()
+                finish()
+            } catch (let error) {
+                print(error.localizedDescription)
+                if attempts < maxRetries {
+                    attempts += 1
+                    timeoutInterval = timeoutInterval * 2
+                    sleep(10)
+                    main()
+                } else {
+                    finish()
+                }
+            }
         }
+    }
+    
+    func finish() {
+        subject.send(completion: .finished)
+        isExecuting = false
+        isFinished = true
     }
     
     
