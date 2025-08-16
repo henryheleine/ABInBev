@@ -19,13 +19,7 @@ struct SurveyReducer: Reducer {
             switch action {
             case .background:
                 state.uploadClient.operationQueue.cancelAllOperations()
-                let request = BGProcessingTaskRequest(
-                    identifier: "com.henryheleine.ABInBev.backgroundTask"
-                )
-                request.requiresNetworkConnectivity = true
-                request.requiresExternalPower = false
-                request.earliestBeginDate = Date().addingTimeInterval(10)
-                try? BGTaskScheduler.shared.submit(request)
+                BGTaskScheduler.schedule()
                 return .none
             case .complete:
                 state.surveyMode = .complete

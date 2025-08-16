@@ -5,19 +5,24 @@
 //  Created by Henry Heleine on 8/12/25.
 //
 
+import BackgroundTasks
 import Combine
 import ComposableArchitecture
 import Foundation
 
-class UploadClient: NSObject, URLSessionDownloadDelegate {
+class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
     @Dependency(\.filePersistence) var persistence
     public static let shared = UploadClient()
     let backgroundTimeout = Double(24 * 60 * 60) // 24 hours
+    var attempts: Int
     var id: UUID
+    var maxRetries: Int
     var operationQueue: OperationQueue
     
-    init(id: UUID = UUID(), operationQueue: OperationQueue = OperationQueue()) {
+    init(attempts: Int = 0, id: UUID = UUID(), operationQueue: OperationQueue = OperationQueue(), maxRetries: Int = 1) {
+        self.attempts = attempts
         self.id = id
+        self.maxRetries = maxRetries
         self.operationQueue = operationQueue
         self.operationQueue.name = "com.henryheleine.ABInBev.UploadClientOperationQueue"
         self.operationQueue.maxConcurrentOperationCount = 2
@@ -61,10 +66,19 @@ class UploadClient: NSObject, URLSessionDownloadDelegate {
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        print("didWriteData")
+        print("didWriteData: bytesWritten = \(bytesWritten) totalBytesWritten = \(totalBytesWritten) totalBytesExpectedToWrite = \(totalBytesExpectedToWrite)")
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
-        print("didResumeAtOffset")
+        print("didResumeAtOffset: fileOffset = \(fileOffset) expectedTotalBytes = \(expectedTotalBytes)")
+    }
+    
+    // MARK: - URLSessionDelegate
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
+        if attempts < maxRetries, let error = error {
+            attempts += 1
+            sleep(10)
+            BGTaskScheduler.schedule()
+        }
     }
 }
