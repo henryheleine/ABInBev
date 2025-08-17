@@ -9,6 +9,7 @@ import BackgroundTasks
 import Foundation
 
 extension BGTaskScheduler {
+    
     public static func schedule() {
         let request = BGProcessingTaskRequest(
             identifier: "com.henryheleine.ABInBev.backgroundTask"

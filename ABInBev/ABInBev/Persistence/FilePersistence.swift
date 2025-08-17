@@ -40,6 +40,7 @@ extension FilePersistence {
     }()
 }
 
+// MARK: - Boilerplate code
 private struct AnyEncodable: Encodable {
     let encodable: Encodable
     init(_ encodable: Encodable) {

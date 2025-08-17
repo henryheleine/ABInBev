@@ -35,7 +35,9 @@ class UploadOperation: Operation, @unchecked Sendable {
         Task {
             let request = URLRequest.mock(forSurveyId: surveyId, timeoutInterval: timeoutInterval)
             do {
-                let (bytes, _) = try await URLSession.shared.bytes(for: request)
+                let config = URLSessionConfiguration.foregroundConfig()
+                let session = URLSession(configuration: config)
+                let (bytes, _) = try await session.bytes(for: request)
                 var iterator = bytes.makeAsyncIterator()
                 var data = Data()
                 while isActive, let byte = try await iterator.next() {
@@ -55,9 +57,10 @@ class UploadOperation: Operation, @unchecked Sendable {
             } catch (let error) {
                 print(error.localizedDescription)
                 if attempts < maxRetries {
+                    // double timeout and wait 30 seconds before retrying
                     attempts += 1
                     timeoutInterval = timeoutInterval * 2
-                    sleep(10)
+                    sleep(30)
                     main()
                 } else {
                     finish()
@@ -73,7 +76,7 @@ class UploadOperation: Operation, @unchecked Sendable {
     }
     
     
-    // MARK: Operation boilerplater code
+    // MARK: - Boilerplate code
     override var isAsynchronous: Bool { true }
     private let stateQueue = DispatchQueue(label: "persistent.operation.state", attributes: .concurrent)
     private var _executing: Bool = false

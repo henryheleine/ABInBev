@@ -5,10 +5,10 @@
 //  Created by Henry Heleine on 8/12/25.
 //
 
-import Combine
 import Foundation
 
 struct SurveyState: Codable, Equatable, Identifiable {
+    var date: Date
     var id: UUID
     var imageUploadPercentage: Double
     var notes: String
@@ -17,12 +17,14 @@ struct SurveyState: Codable, Equatable, Identifiable {
     var surveyMode: SurveyMode
     var uploadClient: UploadClient
     
-    init(id: UUID = UUID(),
+    init(date: Date = Date(),
+         id: UUID = UUID(),
          imageUploadPercentage: Double = 0,
          notes: String = "...",
          referenceNumber: String = "\(Int.random(in: 0...100))",
          surveyMode: SurveyMode = .paused,
          uploadClient: UploadClient = UploadClient.shared) {
+        self.date = date
         self.id = id
         self.imageUploadPercentage = imageUploadPercentage
         self.notes = notes
@@ -33,6 +35,7 @@ struct SurveyState: Codable, Equatable, Identifiable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        date = try container.decode(Date.self, forKey: .date)
         id = try container.decode(UUID.self, forKey: .id)
         imageUploadPercentage = try container.decode(Double.self, forKey: .imageUploadPercentage)
         notes = try container.decode(String.self, forKey: .notes)
@@ -44,6 +47,7 @@ struct SurveyState: Codable, Equatable, Identifiable {
         
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(date, forKey: .date)
         try container.encode(id, forKey: .id)
         try container.encode(imageUploadPercentage, forKey: .imageUploadPercentage)
         try container.encode(notes, forKey: .notes)
@@ -52,6 +56,6 @@ struct SurveyState: Codable, Equatable, Identifiable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case id, imageUploadPercentage, notes, referenceNumber, surveyMode
+        case date, id, imageUploadPercentage, notes, referenceNumber, surveyMode
     }
 }

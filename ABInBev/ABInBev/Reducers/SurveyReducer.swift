@@ -30,6 +30,7 @@ struct SurveyReducer: Reducer {
             case .upload:
                 state.surveyMode = .uploading
                 state.imageUploadPercentage = 0
+                state.date = Date()
                 return .publisher {
                     state.uploadClient
                         .publisher(surveyId: state.referenceNumber)

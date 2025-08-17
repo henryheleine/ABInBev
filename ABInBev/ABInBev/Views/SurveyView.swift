@@ -6,7 +6,6 @@
 //
 
 import ComposableArchitecture
-import Foundation
 import SwiftUI
 
 struct SurveyView: View {
@@ -20,6 +19,8 @@ struct SurveyView: View {
                     VStack {
                         let text = """
                             # \(viewStore.state.referenceNumber)
+                            Date:
+                            \(viewStore.state.date.format())
                             Notes:
                             \(viewStore.state.notes)
                             Image (Uploaded: \(String(format: "%.2f", viewStore.state.imageUploadPercentage * 100))%)

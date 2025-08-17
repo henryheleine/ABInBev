@@ -25,6 +25,9 @@ struct ABInBevApp: App {
                 let session = URLSession(configuration: config, delegate: UploadClient.shared, delegateQueue: UploadClient.shared.operationQueue)
                 let surveys = try await persistence.load([SurveyState].self) as! [SurveyState]
                 surveys.forEach { survey in
+                    let hoursDifference = -survey.date.timeIntervalSinceNow / 3600 // optional requirement to discard uploads that started more than 24 hours ago
+                    guard hoursDifference > 24 else { return }
+                    
                     if survey.surveyMode != .complete {
                         let request = URLRequest.mock(forSurveyId: survey.referenceNumber)
                         session.downloadTask(with: request).resume()

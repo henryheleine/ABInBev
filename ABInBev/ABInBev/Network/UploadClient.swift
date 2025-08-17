@@ -13,7 +13,7 @@ import Foundation
 class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
     @Dependency(\.filePersistence) var persistence
     public static let shared = UploadClient()
-    let backgroundTimeout = Double(24 * 60 * 60) // 24 hours
+    let backgroundTimeout = Double(24 * 60 * 60)
     var attempts: Int
     var id: UUID
     var maxRetries: Int
@@ -75,9 +75,10 @@ class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
     
     // MARK: - URLSessionDelegate
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
-        if attempts < maxRetries, let error = error {
+        if attempts < maxRetries, let _ = error {
+            // wait 30 seconds before retrying
             attempts += 1
-            sleep(10)
+            sleep(30)
             BGTaskScheduler.schedule()
         }
     }
