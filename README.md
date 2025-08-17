@@ -1,27 +1,20 @@
 # ABInBev
 
 Overview:
+- Demo app to showcase Combine and Composable Architecture (TCA)
+- Designed to handle slow network connections in foreground and background
+- With time delayed retries, automatic reconnection and queue prioritization (via drag n drop)
+- Uses a mocked API that simulates slow streamed network connection with async iterators
 
 Demo of main scenarios:
 
-Done:
-- Composable Architecture for state management of list of surveys
-- Add priority queue based time added
-- Variable for retries, wait small time then retry with increased timeout interval
-
-Backend Plan:
-- mocked for random text / image(s)
-- mock POST request up to server
 
 P2 Further Work:
-- max downloads while on slow connections 1 - 3
-- add task scheduler with OS
-- requires external power as an option during carplay
-- live activities and widget for downloading status
-- more appropriate monitoring/alerting on errors
-- interactive widget for carplay ultra
-- expire cache / clear up after 1 month
-- auto upload config/setting
-- NWPath reachability listener
+- production standard error handling, monitoring and alert
+- interactive widget for viewing uploads with iOS 26 Carplay Ultra
+- live activity on lock screen and/or widgets to show dynamic upload progress in real time
+- optimize concurrent connections, delay and timeouts with learning modal over time
+- optimize successul uploads with scheduled tasks at specific time/day with the operating system
+- add optional clean up process to remove cached files, failed downloads older than one month, etc.
+
 - swipe to delete
-- edit drag and drop in order of priority

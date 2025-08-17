@@ -24,6 +24,9 @@ struct HomeListView: View {
                             ),
                             content: SurveyView.init
                         )
+                        .onDelete { indexSet in
+                            viewStore.send((.deleteSurvey(indexSet)))
+                        }
                         .onMove { indexSet, newIndex in
                             viewStore.send(.moveSurvey(indexSet, newIndex))
                         }

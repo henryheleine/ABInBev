@@ -19,6 +19,10 @@ struct ListReducer: Reducer {
             case .addSurvey:
                 state.surveys.append(SurveyState())
                 return .send(.saveToDisk)
+            case .deleteSurvey(let indexSet):
+                let survey = state.surveys[indexSet.first!]
+                state.surveys.remove(survey)
+                return .none
             case .loadFromDisk:
                 return .run { send in
                     await send(.loadResponse(Result { try persistence.load([SurveyState].self) as! [SurveyState] }))
