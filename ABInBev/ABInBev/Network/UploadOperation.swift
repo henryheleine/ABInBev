@@ -21,7 +21,7 @@ class UploadOperation: Operation, @unchecked Sendable {
          maxRetries: Int = 1,
          subject: PassthroughSubject<Double, Never> = PassthroughSubject<Double, Never>(),
          surveyId: String = "",
-         timeoutInterval: TimeInterval = 60) {
+         timeoutInterval: TimeInterval = UploadClient.shared.foregroundTimeout) {
         self.attempts = attempts
         self.isActive = isActive
         self.maxRetries = maxRetries

@@ -1,16 +1,8 @@
 # ABInBev
 
-Native Plan:
-- File backed storage for demo
-- 24 hours cut off for background task/retry
+Overview:
 
-- NWPath reachability listener
-
-- Task progress for iOS 26 live activities
-- Continued Processing Task Request (id, title, subtitle)
-- Automated tests
-- swipe to delete
-- allow for change of operation priority
+Demo of main scenarios:
 
 Done:
 - Composable Architecture for state management of list of surveys
@@ -30,3 +22,6 @@ P2 Further Work:
 - interactive widget for carplay ultra
 - expire cache / clear up after 1 month
 - auto upload config/setting
+- NWPath reachability listener
+- swipe to delete
+- edit drag and drop in order of priority

@@ -24,6 +24,9 @@ struct HomeListView: View {
                             ),
                             content: SurveyView.init
                         )
+                        .onMove { indexSet, newIndex in
+                            viewStore.send(.moveSurvey(indexSet, newIndex))
+                        }
                     }
                     Button("Add Survey") {
                         viewStore.send(.addSurvey)

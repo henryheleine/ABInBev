@@ -29,6 +29,11 @@ struct ListReducer: Reducer {
             case let .loadResponse(.failure(error)):
                 print(error.localizedDescription)
                 return .none
+            case .moveSurvey(let indexSet, let newIndex):
+                let survey = state.surveys[indexSet.first!]
+                survey.uploadClient.increasePriorityOfSurvey(surveyId: survey.referenceNumber)
+                state.surveys.move(fromOffsets: indexSet, toOffset: newIndex)
+                return .none
             case .saveToDisk:
                 let surveys = state.surveys
                 return .run { send in
