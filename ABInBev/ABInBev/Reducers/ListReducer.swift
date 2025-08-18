@@ -35,8 +35,15 @@ struct ListReducer: Reducer {
                 print(error.localizedDescription)
                 return .none
             case .moveSurvey(let indexSet, let newIndex):
-                let survey = state.surveys[indexSet.first!]
-                survey.uploadClient.increasePriorityOfSurvey(surveyId: survey.referenceNumber)
+                guard let sourceIndex = indexSet.first else { return .none }
+                let survey = state.surveys[sourceIndex]
+                if newIndex < sourceIndex {
+                    // move item up
+                    survey.uploadClient.changePriorityOfSurvey(surveyId: survey.referenceNumber, priority: .high)
+                } else if newIndex > sourceIndex {
+                    // move item down
+                    survey.uploadClient.changePriorityOfSurvey(surveyId: survey.referenceNumber, priority: .low)
+                }
                 state.surveys.move(fromOffsets: indexSet, toOffset: newIndex)
                 return .none
             case .saveToDisk:

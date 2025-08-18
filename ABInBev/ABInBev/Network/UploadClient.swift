@@ -39,10 +39,10 @@ class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
         }
     }
     
-    func increasePriorityOfSurvey(surveyId: String) {
+    func changePriorityOfSurvey(surveyId: String, priority: Operation.QueuePriority) {
         operationQueue.operations.forEach { operation in
             if let operation = operation as? UploadOperation, operation.surveyId == surveyId {
-                operation.queuePriority = .high
+                operation.queuePriority = priority
             }
         }
     }
