@@ -21,6 +21,7 @@ struct ListReducer: Reducer {
                 return .send(.saveToDisk)
             case .deleteSurvey(let indexSet):
                 let survey = state.surveys[indexSet.first!]
+                survey.uploadClient.deleteOperation(forSurveyId: survey.referenceNumber)
                 state.surveys.remove(survey)
                 return .none
             case .loadFromDisk:

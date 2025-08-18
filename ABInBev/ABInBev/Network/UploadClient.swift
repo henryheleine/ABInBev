@@ -31,13 +31,12 @@ class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
         self.operationQueue.maxConcurrentOperationCount = 2 // for slow connections start low but optionally config to optimized value over time
     }
     
-    func publisher(surveyId: String) -> AnyPublisher<Double, Never> {
-        let subject = PassthroughSubject<Double, Never>()
-        let uploadOperation = UploadOperation(subject: subject, surveyId: surveyId)
-        operationQueue.addOperation(uploadOperation)
-        return subject
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+    func deleteOperation(forSurveyId surveyId: String) {
+        operationQueue.operations.forEach { operation in
+            if let operation = operation as? UploadOperation, operation.surveyId == surveyId {
+                operation.cancel()
+            }
+        }
     }
     
     func increasePriorityOfSurvey(surveyId: String) {
@@ -48,13 +47,22 @@ class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
         }
     }
     
-    static func isValidJSON(_ data: Data) -> Bool {
+    func isValidJSON(_ data: Data) -> Bool {
         do {
             _ = try JSONSerialization.jsonObject(with: data, options: [])
             return true
         } catch {
             return false
         }
+    }
+    
+    func publisher(surveyId: String) -> AnyPublisher<Double, Never> {
+        let subject = PassthroughSubject<Double, Never>()
+        let uploadOperation = UploadOperation(subject: subject, surveyId: surveyId)
+        operationQueue.addOperation(uploadOperation)
+        return subject
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
     
     

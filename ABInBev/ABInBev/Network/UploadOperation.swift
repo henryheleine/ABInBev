@@ -42,7 +42,7 @@ class UploadOperation: Operation, @unchecked Sendable {
                 var data = Data()
                 while let byte = try await iterator.next() {
                     data.append(byte)
-                    if UploadClient.isValidJSON(data) {
+                    if UploadClient.shared.isValidJSON(data) {
                         if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let _ = json["progress"] as? Double {
                             // mock slow connection/large file upload
                             for i in 0...25 {
