@@ -25,17 +25,21 @@ struct SurveyReducer: Reducer {
                 state.surveyMode = .complete
                 return .none
             case .updateProgress(let progress):
+                state.surveyMode = .uploading
                 state.imageUploadPercentage = progress
+                if progress == 1 {
+                    return .run { send in
+                        await send(.complete)
+                    }
+                }
                 return .none
             case .upload:
                 state.surveyMode = .uploading
-                state.imageUploadPercentage = 0
                 state.date = Date()
                 return .publisher {
                     state.uploadClient
                         .publisher(surveyId: state.referenceNumber)
                         .map(SurveyAction.updateProgress)
-                        .append(Just(.complete))
                         .eraseToAnyPublisher()
                 }
             }

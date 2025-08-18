@@ -10,20 +10,20 @@ import Foundation
 
 class UploadOperation: Operation, @unchecked Sendable {
     var attempts: Int
-    var isActive: Bool
     var maxRetries: Int
+    var networkMonitor: NetworkMonitor
     var subject: PassthroughSubject<Double, Never>
     var surveyId: String
     var timeoutInterval: TimeInterval
     
     init(attempts: Int = 0,
-         isActive: Bool = true,
          maxRetries: Int = 1,
+         networkMonitor: NetworkMonitor = NetworkMonitor(),
          subject: PassthroughSubject<Double, Never> = PassthroughSubject<Double, Never>(),
          surveyId: String = "",
          timeoutInterval: TimeInterval = UploadClient.shared.foregroundTimeout) {
         self.attempts = attempts
-        self.isActive = isActive
+        self.networkMonitor = networkMonitor
         self.maxRetries = maxRetries
         self.subject = subject
         self.surveyId = surveyId
@@ -40,7 +40,7 @@ class UploadOperation: Operation, @unchecked Sendable {
                 let (bytes, _) = try await session.bytes(for: request)
                 var iterator = bytes.makeAsyncIterator()
                 var data = Data()
-                while isActive, let byte = try await iterator.next() {
+                while let byte = try await iterator.next() {
                     data.append(byte)
                     if UploadClient.isValidJSON(data) {
                         if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let _ = json["progress"] as? Double {

@@ -17,13 +17,14 @@ struct SurveyView: View {
             Group {
                 HStack {
                     VStack {
+                        let percentage = UploadClient.shared.isActive ? String(format: "%.2f", viewStore.state.imageUploadPercentage * 100) : "0.00"
                         let text = """
                             # \(viewStore.state.referenceNumber)
                             Date:
                             \(viewStore.state.date.format())
                             Notes:
                             \(viewStore.state.notes)
-                            Image (Uploaded: \(String(format: "%.2f", viewStore.state.imageUploadPercentage * 100))%)
+                            Image (Uploaded: \(percentage)%)
                             🍺
                             """
                         Text(text)

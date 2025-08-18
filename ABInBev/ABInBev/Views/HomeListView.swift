@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeListView: View {
     @Environment(\.scenePhase) private var scenePhase
-    var store: StoreOf<ListReducer>
+    let store: StoreOf<ListReducer>
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in

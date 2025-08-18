@@ -16,13 +16,15 @@ class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
     let backgroundTimeout = Double(24 * 60 * 60)
     let foregroundTimeout = Double(60)
     var attempts: Int
+    var isActive: Bool
     var id: UUID
     var maxRetries: Int
     var operationQueue: OperationQueue
     
-    init(attempts: Int = 0, id: UUID = UUID(), operationQueue: OperationQueue = OperationQueue(), maxRetries: Int = 1) {
+    init(attempts: Int = 0, id: UUID = UUID(), isActive: Bool = true, operationQueue: OperationQueue = OperationQueue(), maxRetries: Int = 1) {
         self.attempts = attempts
         self.id = id
+        self.isActive = isActive
         self.maxRetries = maxRetries
         self.operationQueue = operationQueue
         self.operationQueue.name = "com.henryheleine.ABInBev.UploadClientOperationQueue"
@@ -32,7 +34,6 @@ class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
     func publisher(surveyId: String) -> AnyPublisher<Double, Never> {
         let subject = PassthroughSubject<Double, Never>()
         let uploadOperation = UploadOperation(subject: subject, surveyId: surveyId)
-        print(uploadOperation.queuePriority)
         operationQueue.addOperation(uploadOperation)
         return subject
             .receive(on: DispatchQueue.main)
@@ -55,6 +56,7 @@ class UploadClient: NSObject, URLSessionDownloadDelegate, URLSessionDelegate {
             return false
         }
     }
+    
     
     // MARK: - URLSessionDownloadDelegate
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
