@@ -1,6 +1,6 @@
 # ABInBev
 
-- Minimum Requirements:
+Minimum Requirements:
 - Xcode 16, Swift 5 and iOS 18
 
 Overview:
