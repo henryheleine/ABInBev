@@ -37,6 +37,7 @@ struct HomeListView: View {
                     .padding()
                 }
                 .onChange(of: scenePhase, { oldValue, newValue in
+                    // app foregrounding
                     if oldValue == .inactive && newValue == .active {
                         viewStore.send(.loadFromDisk)
                     }
