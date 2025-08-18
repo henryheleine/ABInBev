@@ -30,7 +30,7 @@ https://www.dropbox.com/scl/fi/dyfhzziq815po6rc86t6g/SwipeToDelete.MP4?rlkey=sgq
 
 P2 Further Work:
 - Integrate production level monitoring, error handling, alerting and security
-- For this demo the network requests are entirely cancelled and retried however with a full server setup the resume data APIs could be used with tasks to reduce total bytes processed
+- For this demo the network requests are entirely cancelled and retried however with a full server setup the resume data APIs could be used with tasks to reduce total bytes processed on subsequent retries
 - Optimize concurrent connections, delay and timeouts based on success model over time
 - Integrate clean up process to remove old/cached files, failed downloads older than one month, etc. to improve app resources/size
 - Scheduled networking tasks with the operating system at times/locations that historically provide the best success rates for the user
