@@ -16,8 +16,10 @@ Demo videos:
 - Device going in and out of poor network (automatically reconnecting)
 https://www.dropbox.com/scl/fi/3hl4pxj2hfp1fim99ldl8/ConnectionInAndOutAutoReconnect.MP4?rlkey=m1p150oote789m33mgrnlpp0z&st=nyn1e5cc
 - Requests processing with background tasks (can be over an extended period of time, device can be not running and again automatic retry)
+
 Device part: https://www.dropbox.com/scl/fi/fasabw1v7mh8fdhqjob3i/backgroundtaskiphone.mov?rlkey=1kzquec75jk0pu3xtmjztmsbe&st=ds6wg46i
 Xcode and server part: https://www.dropbox.com/scl/fi/al374whi5szrcj7k3nua9/backgroundtaskxcodeandserver.mov?rlkey=vaqkp01appfdo9ltzuj0cvwga&st=cdsyjpbw
+
 NOTE: in case you need debug trigger for xcode the steps and statement (e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.henryheleine.ABInBev.backgroundTask"]) can be found at:
 https://developer.apple.com/documentation/backgroundtasks/starting-and-terminating-tasks-during-development
 - Operation Queue (set to max concurrent = 2 for demo purposes) with priority change on drag n drop
@@ -27,6 +29,7 @@ https://www.dropbox.com/scl/fi/dyfhzziq815po6rc86t6g/SwipeToDelete.MP4?rlkey=sgq
 
 P2 Further Work:
 - Integrate production level monitoring, error handling, alerting and security
+- For this demo the network requests are entirely cancelled and retried however with a full server setup the resume data APIs could be used with tasks to reduce total bytes processed
 - Optimize concurrent connections, delay and timeouts based on success model over time
 - Integrate clean up process to remove old/cached files, failed downloads older than one month, etc. to improve app resources/size
 - Scheduled networking tasks with the operating system at times/locations that historically provide the best success rates for the user
