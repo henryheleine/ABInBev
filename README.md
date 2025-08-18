@@ -26,11 +26,11 @@ https://www.dropbox.com/scl/fi/s8kc9m2qauvkio3m286f4/PrioritizeRequests.MP4?rlke
 https://www.dropbox.com/scl/fi/dyfhzziq815po6rc86t6g/SwipeToDelete.MP4?rlkey=sgqyzr85iztd121vg28gwd1dx&st=n3gps86j
 
 P2 Further Work:
+- Integrate production level monitoring, error handling, alerting and security
+- Optimize concurrent connections, delay and timeouts based on success model over time
+- Integrate clean up process to remove old/cached files, failed downloads older than one month, etc. to improve app resources/size
+- Scheduled networking tasks with the operating system at times/locations that historically provides best success rate
 - Integrate a dynamic lock screen live activity to show dynamic request progress in real time
 (many applications similar to: https://www.youtube.com/watch?v=DytXQ3-igPs)
 - Integrate an interactive widget for viewing request progress and with iOS 26 via Carplay (Ultra)
 https://developer.apple.com/videos/play/wwdc2025/278/
-- Optimize concurrent connections, delay and timeouts with learning modal over time
-- Scheduled networking tasks with the operating system at times/locations that historically provides best success rate
-- Integrate clean up process to remove old/cached files, failed downloads older than one month, etc.
-- Production level monitoring, error handling, alerting and security
