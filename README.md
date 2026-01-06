@@ -20,7 +20,7 @@ https://www.dropbox.com/scl/fi/3hl4pxj2hfp1fim99ldl8/ConnectionInAndOutAutoRecon
 
 OS Run Background Task: https://www.dropbox.com/scl/fi/fasabw1v7mh8fdhqjob3i/backgroundtaskiphone.mov?rlkey=1kzquec75jk0pu3xtmjztmsbe&st=ds6wg46i
 
-Xcode and server part: https://www.dropbox.com/scl/fi/al374whi5szrcj7k3nua9/backgroundtaskxcodeandserver.mov?rlkey=vaqkp01appfdo9ltzuj0cvwga&st=cdsyjpbw
+Xcode debug to trigger system background task and server logging network call: https://www.dropbox.com/scl/fi/al374whi5szrcj7k3nua9/backgroundtaskxcodeandserver.mov?rlkey=vaqkp01appfdo9ltzuj0cvwga&st=cdsyjpbw
 
 NOTE: in case you need debug trigger for xcode the steps and statement (e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.henryheleine.ABInBev.backgroundTask"]) can be found at:
 https://developer.apple.com/documentation/backgroundtasks/starting-and-terminating-tasks-during-development
