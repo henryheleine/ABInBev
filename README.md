@@ -10,12 +10,13 @@ Overview:
 - Persists surveys on disk (documents directory) for easy/quick demo purposes
 - Uses a mocked API to simulate slow network connections with a streamed response using async iterators for faster/dynamic response rendering
 - Drag and drop to re-order priority and/or swipe to delete items
+- Live activity visual components are available for demo purposes 
 - Main parts include ListReducer for handling survey state management, SurveyReducer for handling publishing combine network updates + foreground/background and UploadClient for handling background tasks
 
 Demo videos:
 - Device going in and out of poor network (automatically reconnecting)
 https://www.dropbox.com/scl/fi/3hl4pxj2hfp1fim99ldl8/ConnectionInAndOutAutoReconnect.MP4?rlkey=m1p150oote789m33mgrnlpp0z&st=nyn1e5cc
-- Requests processing with background tasks (can be over an extended period of time, device can be not running and again automatic retry)
+- Requests processing with background tasks (can be over an extended period of time, app might not even be running and again automatic retry)
 
 Device part: https://www.dropbox.com/scl/fi/fasabw1v7mh8fdhqjob3i/backgroundtaskiphone.mov?rlkey=1kzquec75jk0pu3xtmjztmsbe&st=ds6wg46i
 
