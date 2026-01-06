@@ -31,10 +31,19 @@ struct HomeListView: View {
                             viewStore.send(.moveSurvey(indexSet, newIndex))
                         }
                     }
+                    Spacer()
                     Button("Add Survey") {
                         viewStore.send(.addSurvey)
                     }
-                    .padding()
+                    Spacer()
+                    Button("Start Live Updates") {
+                        viewStore.send(.startLiveUpdates)
+                    }
+                    Spacer()
+                    Button("Stop Live Updates") {
+                        viewStore.send(.stopLiveUpdates)
+                    }
+                    Spacer()
                 }
                 .onChange(of: scenePhase, { oldValue, newValue in
                     // app foregrounding

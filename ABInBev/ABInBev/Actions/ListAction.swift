@@ -8,7 +8,7 @@
 import Foundation
 
 enum ListAction {
-    case addSurvey, loadFromDisk, saveToDisk
+    case addSurvey, loadFromDisk, startLiveUpdates, saveToDisk, stopLiveUpdates
     case deleteSurvey(IndexSet)
     case loadResponse(Result<[SurveyState], Error>)
     case moveSurvey(IndexSet, Int)

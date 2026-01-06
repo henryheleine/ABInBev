@@ -9,10 +9,8 @@ import ActivityKit
 
 struct WidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var emoji: String
+        var progress: Double
     }
 
-    // Fixed non-changing properties about your activity go here!
     var name: String
 }

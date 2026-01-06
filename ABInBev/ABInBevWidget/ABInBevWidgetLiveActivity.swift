@@ -9,46 +9,34 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct ABInBevWidgetAttributes: ActivityAttributes {
-    public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var emoji: String
-    }
-
-    // Fixed non-changing properties about your activity go here!
-    var name: String
-}
-
 struct ABInBevWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: ABInBevWidgetAttributes.self) { context in
-            // Lock screen/banner UI goes here
+        ActivityConfiguration(for: WidgetAttributes.self) { context in
             VStack {
-                Text("Hello \(context.state.emoji)")
+                Text("Uploading... \(context.state.progress.percent())")
+                ProgressViewCircular(progress: context.state.progress)
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
 
         } dynamicIsland: { context in
             DynamicIsland {
-                // Expanded UI goes here.  Compose the expanded UI through
-                // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                    Text("Uploading...")
+                        .padding()
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+                    ProgressViewCircular(progress: context.state.progress)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
-                    // more content
+                    Text("Progress \(context.state.progress.percent())")
                 }
             } compactLeading: {
-                Text("L")
+                Text("⬆️")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                ProgressViewCircular(progress: context.state.progress)
             } minimal: {
-                Text(context.state.emoji)
+                Text("P \(context.state.progress)")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
@@ -56,25 +44,25 @@ struct ABInBevWidgetLiveActivity: Widget {
     }
 }
 
-extension ABInBevWidgetAttributes {
-    fileprivate static var preview: ABInBevWidgetAttributes {
-        ABInBevWidgetAttributes(name: "World")
+extension WidgetAttributes {
+    fileprivate static var preview: WidgetAttributes {
+        WidgetAttributes(name: "World")
     }
 }
 
-extension ABInBevWidgetAttributes.ContentState {
-    fileprivate static var smiley: ABInBevWidgetAttributes.ContentState {
-        ABInBevWidgetAttributes.ContentState(emoji: "😀")
+extension WidgetAttributes.ContentState {
+    fileprivate static var smiley: WidgetAttributes.ContentState {
+        WidgetAttributes.ContentState(progress: 0.5)
      }
      
-     fileprivate static var starEyes: ABInBevWidgetAttributes.ContentState {
-         ABInBevWidgetAttributes.ContentState(emoji: "🤩")
+     fileprivate static var starEyes: WidgetAttributes.ContentState {
+         WidgetAttributes.ContentState(progress: 0.5)
      }
 }
 
-#Preview("Notification", as: .content, using: ABInBevWidgetAttributes.preview) {
+#Preview("Notification", as: .content, using: WidgetAttributes.preview) {
    ABInBevWidgetLiveActivity()
 } contentStates: {
-    ABInBevWidgetAttributes.ContentState.smiley
-    ABInBevWidgetAttributes.ContentState.starEyes
+    WidgetAttributes.ContentState.smiley
+    WidgetAttributes.ContentState.starEyes
 }

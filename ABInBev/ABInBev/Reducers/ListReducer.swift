@@ -5,6 +5,7 @@
 //  Created by Henry Heleine on 8/11/25.
 //
 
+import ActivityKit
 import ComposableArchitecture
 import Foundation
 
@@ -23,6 +24,32 @@ struct ListReducer: Reducer {
                 let survey = state.surveys[indexSet.first!]
                 survey.uploadClient.deleteOperation(forSurveyId: survey.referenceNumber)
                 state.surveys.remove(survey)
+                return .none
+            case .startLiveUpdates:
+                if !ActivityAuthorizationInfo().areActivitiesEnabled {
+                    print("Live Activities are not enabled.")
+                } else {
+                    let attributes = WidgetAttributes(name: "MyFirstLiveActivity")
+                    let initialContentState = WidgetAttributes.ContentState(progress: 0.5)
+                    let content = ActivityContent(state: initialContentState, staleDate: nil, relevanceScore: 1.0)
+                    do {
+                        let activity = try Activity<WidgetAttributes>.request(
+                            attributes: attributes,
+                            content: content,
+                            pushType: nil
+                        )
+                    } catch {
+                        print("Error starting Live Activity: \(error.localizedDescription)")
+                    }
+                }
+                return .none
+            case .stopLiveUpdates:
+                Task {
+                    for activity in Activity<WidgetAttributes>.activities {
+                        await activity.end(activity.content, dismissalPolicy: .immediate)
+                    }
+                    print("Live Activities stopped.")
+                }
                 return .none
             case .loadFromDisk:
                 return .run { send in

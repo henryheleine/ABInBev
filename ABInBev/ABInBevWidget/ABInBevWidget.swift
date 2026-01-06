@@ -49,8 +49,8 @@ struct ABInBevWidgetEntryView : View {
             Text("Time:")
             Text(entry.date, style: .time)
 
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+            Text("Progress:")
+            Text("\(entry.configuration.progress)")
         }
     }
 }
@@ -69,13 +69,13 @@ struct ABInBevWidget: Widget {
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
+        intent.progress = 0.5
         return intent
     }
     
     fileprivate static var starEyes: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
+        intent.progress = 0.5
         return intent
     }
 }

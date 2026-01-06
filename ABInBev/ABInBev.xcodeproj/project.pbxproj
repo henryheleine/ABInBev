@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BAF201BC2F0DA474006A3232 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF201BB2F0DA474006A3232 /* WidgetKit.framework */; };
+		BAF201BE2F0DA474006A3232 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF201BD2F0DA474006A3232 /* SwiftUI.framework */; };
+		BAF201CF2F0DA475006A3232 /* ABInBevWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BAF201B92F0DA474006A3232 /* ABInBevWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DECEB4C62E4A3AEE009B568E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DECEB4C52E4A3AEE009B568E /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BAF201CD2F0DA475006A3232 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DECEB4922E4A38C2009B568E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BAF201B82F0DA474006A3232;
+			remoteInfo = ABInBevWidgetExtension;
+		};
 		DECEB4A82E4A38C3009B568E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DECEB4922E4A38C2009B568E /* Project object */;
@@ -27,13 +37,51 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BAF201D02F0DA475006A3232 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BAF201CF2F0DA475006A3232 /* ABInBevWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BAF201B92F0DA474006A3232 /* ABInBevWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ABInBevWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAF201BB2F0DA474006A3232 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		BAF201BD2F0DA474006A3232 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		DECEB49A2E4A38C2009B568E /* ABInBev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABInBev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECEB4A72E4A38C3009B568E /* ABInBevTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABInBevTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECEB4B12E4A38C3009B568E /* ABInBevUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ABInBevUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BAF201D42F0DA475006A3232 /* Exceptions for "ABInBevWidget" folder in "ABInBevWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BAF201B82F0DA474006A3232 /* ABInBevWidgetExtension */;
+		};
+		BAF2024B2F0DB049006A3232 /* Exceptions for "ABInBevWidget" folder in "ABInBev" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				WidgetAttributes.swift,
+			);
+			target = DECEB4992E4A38C2009B568E /* ABInBev */;
+		};
+		BAF2024F2F0DB6FE006A3232 /* Exceptions for "ABInBev" folder in "ABInBevWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extensions/Double+Extensions.swift",
+			);
+			target = BAF201B82F0DA474006A3232 /* ABInBevWidgetExtension */;
+		};
 		DE3DF5C82E4A6DE60062B647 /* Exceptions for "ABInBev" folder in "ABInBev" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -44,10 +92,20 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		BAF201BF2F0DA474006A3232 /* ABInBevWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BAF2024B2F0DB049006A3232 /* Exceptions for "ABInBevWidget" folder in "ABInBev" target */,
+				BAF201D42F0DA475006A3232 /* Exceptions for "ABInBevWidget" folder in "ABInBevWidgetExtension" target */,
+			);
+			path = ABInBevWidget;
+			sourceTree = "<group>";
+		};
 		DECEB49C2E4A38C2009B568E /* ABInBev */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				DE3DF5C82E4A6DE60062B647 /* Exceptions for "ABInBev" folder in "ABInBev" target */,
+				BAF2024F2F0DB6FE006A3232 /* Exceptions for "ABInBev" folder in "ABInBevWidgetExtension" target */,
 			);
 			path = ABInBev;
 			sourceTree = "<group>";
@@ -65,6 +123,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BAF201B62F0DA474006A3232 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAF201BE2F0DA474006A3232 /* SwiftUI.framework in Frameworks */,
+				BAF201BC2F0DA474006A3232 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DECEB4972E4A38C2009B568E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,12 +157,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BAF201BA2F0DA474006A3232 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAF201BB2F0DA474006A3232 /* WidgetKit.framework */,
+				BAF201BD2F0DA474006A3232 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DECEB4912E4A38C2009B568E = {
 			isa = PBXGroup;
 			children = (
 				DECEB49C2E4A38C2009B568E /* ABInBev */,
 				DECEB4AA2E4A38C3009B568E /* ABInBevTests */,
 				DECEB4B42E4A38C3009B568E /* ABInBevUITests */,
+				BAF201BF2F0DA474006A3232 /* ABInBevWidget */,
+				BAF201BA2F0DA474006A3232 /* Frameworks */,
 				DECEB49B2E4A38C2009B568E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +184,7 @@
 				DECEB49A2E4A38C2009B568E /* ABInBev.app */,
 				DECEB4A72E4A38C3009B568E /* ABInBevTests.xctest */,
 				DECEB4B12E4A38C3009B568E /* ABInBevUITests.xctest */,
+				BAF201B92F0DA474006A3232 /* ABInBevWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +192,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BAF201B82F0DA474006A3232 /* ABInBevWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAF201D32F0DA475006A3232 /* Build configuration list for PBXNativeTarget "ABInBevWidgetExtension" */;
+			buildPhases = (
+				BAF201B52F0DA474006A3232 /* Sources */,
+				BAF201B62F0DA474006A3232 /* Frameworks */,
+				BAF201B72F0DA474006A3232 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BAF201BF2F0DA474006A3232 /* ABInBevWidget */,
+			);
+			name = ABInBevWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = ABInBevWidgetExtension;
+			productReference = BAF201B92F0DA474006A3232 /* ABInBevWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DECEB4992E4A38C2009B568E /* ABInBev */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DECEB4BB2E4A38C3009B568E /* Build configuration list for PBXNativeTarget "ABInBev" */;
@@ -120,10 +221,12 @@
 				DECEB4962E4A38C2009B568E /* Sources */,
 				DECEB4972E4A38C2009B568E /* Frameworks */,
 				DECEB4982E4A38C2009B568E /* Resources */,
+				BAF201D02F0DA475006A3232 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BAF201CE2F0DA475006A3232 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				DECEB49C2E4A38C2009B568E /* ABInBev */,
@@ -189,9 +292,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1640;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					BAF201B82F0DA474006A3232 = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					DECEB4992E4A38C2009B568E = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -225,11 +331,19 @@
 				DECEB4992E4A38C2009B568E /* ABInBev */,
 				DECEB4A62E4A38C3009B568E /* ABInBevTests */,
 				DECEB4B02E4A38C3009B568E /* ABInBevUITests */,
+				BAF201B82F0DA474006A3232 /* ABInBevWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BAF201B72F0DA474006A3232 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DECEB4982E4A38C2009B568E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,6 +368,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BAF201B52F0DA474006A3232 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DECEB4962E4A38C2009B568E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,6 +399,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BAF201CE2F0DA475006A3232 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BAF201B82F0DA474006A3232 /* ABInBevWidgetExtension */;
+			targetProxy = BAF201CD2F0DA475006A3232 /* PBXContainerItemProxy */;
+		};
 		DECEB4A92E4A38C3009B568E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DECEB4992E4A38C2009B568E /* ABInBev */;
@@ -291,6 +417,68 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		BAF201D12F0DA475006A3232 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ABInBevWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ABInBevWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBev.ABInBevWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BAF201D22F0DA475006A3232 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PP5D6ER394;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ABInBevWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ABInBevWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henryheleine.ABInBev.ABInBevWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		DECEB4B92E4A38C3009B568E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -350,6 +538,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -407,6 +596,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -547,6 +737,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BAF201D32F0DA475006A3232 /* Build configuration list for PBXNativeTarget "ABInBevWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAF201D12F0DA475006A3232 /* Debug */,
+				BAF201D22F0DA475006A3232 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DECEB4952E4A38C2009B568E /* Build configuration list for PBXProject "ABInBev" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

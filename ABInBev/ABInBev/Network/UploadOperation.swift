@@ -33,39 +33,46 @@ class UploadOperation: Operation, @unchecked Sendable {
     override func main() {
         isExecuting = true
         Task {
-            let request = URLRequest.mock(forSurveyId: surveyId, timeoutInterval: timeoutInterval)
-            do {
-                let config = URLSessionConfiguration.foregroundConfig()
-                let session = URLSession(configuration: config)
-                let (bytes, _) = try await session.bytes(for: request)
-                var iterator = bytes.makeAsyncIterator()
-                var data = Data()
-                while let byte = try await iterator.next() {
-                    data.append(byte)
-                    if UploadClient.shared.isValidJSON(data) {
-                        if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let _ = json["progress"] as? Double {
-                            // mock slow connection/large file upload
-                            for i in 0...25 {
-                                try? await Task.sleep(for: .seconds(1))
-                                subject.send(Double(i) / 25)
-                            }
-                        }
-                        data = Data()
-                    }
-                }
-                finish()
-            } catch (let error) {
-                print(error.localizedDescription)
-                if attempts < maxRetries {
-                    // double timeout and wait 30 seconds before retrying
-                    attempts += 1
-                    timeoutInterval = timeoutInterval * 2
-                    sleep(30)
-                    main()
-                } else {
-                    finish()
-                }
+            var i = 0.0
+            while i < 1 {
+                try? await Task.sleep(for: .seconds(0.25))
+                i += 0.01
+                subject.send(Double(i))
             }
+            finish()
+//            let request = URLRequest.mock(forSurveyId: surveyId, timeoutInterval: timeoutInterval)
+//            do {
+//                let config = URLSessionConfiguration.foregroundConfig()
+//                let session = URLSession(configuration: config)
+//                let (bytes, _) = try await session.bytes(for: request)
+//                var iterator = bytes.makeAsyncIterator()
+//                var data = Data()
+//                while let byte = try await iterator.next() {
+//                    data.append(byte)
+//                    if UploadClient.shared.isValidJSON(data) {
+//                        if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any], let _ = json["progress"] as? Double {
+//                            // mock slow connection/large file upload
+//                            for i in 0...25 {
+//                                try? await Task.sleep(for: .seconds(1))
+//                                subject.send(Double(i) / 25)
+//                            }
+//                        }
+//                        data = Data()
+//                    }
+//                }
+//                finish()
+//            } catch (let error) {
+//                print(error.localizedDescription)
+//                if attempts < maxRetries {
+//                    // double timeout and wait 30 seconds before retrying
+//                    attempts += 1
+//                    timeoutInterval = timeoutInterval * 2
+//                    sleep(30)
+//                    main()
+//                } else {
+//                    finish()
+//                }
+//            }
         }
     }
     

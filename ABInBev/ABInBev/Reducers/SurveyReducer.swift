@@ -27,7 +27,7 @@ struct SurveyReducer: Reducer {
             case .updateProgress(let progress):
                 state.surveyMode = .uploading
                 state.imageUploadPercentage = progress
-                if progress == 1 {
+                if progress.twoDecimals() == "1.00" {
                     return .run { send in
                         await send(.complete)
                     }
