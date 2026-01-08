@@ -10,14 +10,14 @@ import WidgetKit
 import SwiftUI
 
 struct ABInBevWidgetLiveActivity: Widget {
+
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: WidgetAttributes.self) { context in
             VStack {
                 Text("Uploading... \(context.state.progress.percent())")
-                ProgressViewCircular(progress: context.state.progress)
+                ProgressView("Survey #\(context.state.surveyId) Progress", value: context.state.progress, total: 1)
             }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
+            .padding()
 
         } dynamicIsland: { context in
             DynamicIsland {
@@ -51,18 +51,13 @@ extension WidgetAttributes {
 }
 
 extension WidgetAttributes.ContentState {
-    fileprivate static var smiley: WidgetAttributes.ContentState {
-        WidgetAttributes.ContentState(progress: 0.5)
-     }
-     
-     fileprivate static var starEyes: WidgetAttributes.ContentState {
-         WidgetAttributes.ContentState(progress: 0.5)
+    fileprivate static var mock: WidgetAttributes.ContentState {
+        WidgetAttributes.ContentState(progress: 0, surveyId: 0)
      }
 }
 
 #Preview("Notification", as: .content, using: WidgetAttributes.preview) {
    ABInBevWidgetLiveActivity()
 } contentStates: {
-    WidgetAttributes.ContentState.smiley
-    WidgetAttributes.ContentState.starEyes
+    WidgetAttributes.ContentState.mock
 }

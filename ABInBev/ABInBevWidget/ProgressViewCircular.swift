@@ -12,7 +12,7 @@ struct ProgressViewCircular: View {
     
     var body: some View {
         ProgressView(value: progress, total: 1) {
-            Text(progress.twoDecimals())
+            Text("\(Int(progress*100))%")
                 .font(Font.system(size: 6))
         }
         .progressViewStyle(.circular)

@@ -67,22 +67,13 @@ struct ABInBevWidget: Widget {
 }
 
 extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.progress = 0.5
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.progress = 0.5
-        return intent
+    fileprivate static var mock: ConfigurationAppIntent {
+        return ConfigurationAppIntent()
     }
 }
 
 #Preview(as: .systemSmall) {
     ABInBevWidget()
 } timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
+    SimpleEntry(date: .now, configuration: .mock)
 }

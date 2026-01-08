@@ -5,6 +5,7 @@
 //  Created by Henry Heleine on 8/12/25.
 //
 
+import ActivityKit
 import BackgroundTasks
 import Combine
 import ComposableArchitecture
@@ -23,10 +24,12 @@ struct SurveyReducer: Reducer {
                 return .none
             case .complete:
                 state.surveyMode = .complete
+                LiveActivities.stop()
                 return .none
             case .updateProgress(let progress):
                 state.surveyMode = .uploading
                 state.imageUploadPercentage = progress
+                LiveActivities.update(progress: progress, surveyId: Int(state.referenceNumber) ?? 0)
                 if progress.twoDecimals() == "1.00" {
                     return .run { send in
                         await send(.complete)

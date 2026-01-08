@@ -35,7 +35,7 @@ class UploadOperation: Operation, @unchecked Sendable {
         Task {
             var i = 0.0
             while i < 1 {
-                try? await Task.sleep(for: .seconds(0.25))
+                try? await Task.sleep(for: .seconds(1))
                 i += 0.01
                 subject.send(Double(i))
             }

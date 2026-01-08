@@ -10,6 +10,7 @@ import ActivityKit
 struct WidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         var progress: Double
+        var surveyId: Int
     }
 
     var name: String

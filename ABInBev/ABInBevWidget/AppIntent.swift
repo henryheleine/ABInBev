@@ -12,6 +12,6 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource { "Configuration" }
     static var description: IntentDescription { "This is an example widget." }
 
-    @Parameter(title: "Progress", default: 0.5)
+    @Parameter(title: "Progress", default: 0)
     var progress: Double
 }
