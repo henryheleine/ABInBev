@@ -15,7 +15,7 @@ struct LiveActivities {
         let initialContentState = WidgetAttributes.ContentState(progress: progress, surveyId: surveyId)
         let content = ActivityContent(state: initialContentState, staleDate: nil, relevanceScore: 1.0)
         do {
-            let activity = try Activity<WidgetAttributes>.request(
+            let _ = try Activity<WidgetAttributes>.request(
                 attributes: attributes,
                 content: content,
                 pushType: nil
